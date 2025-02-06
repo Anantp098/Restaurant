@@ -1,12 +1,21 @@
 package com.restaurant.restaurant_app.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "restaurant_owner")
 public class RestaurantOwnerDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "owner_id")
     private int ownerId;
 
@@ -15,30 +24,4 @@ public class RestaurantOwnerDetails {
 
     @Column(name = "passport", length = 20, unique = true)
     private String passport;
-
-    // Getters and Setters
-
-    public int getOwnerId() {
-        return ownerId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPassport() {
-        return passport;
-    }
-
-    public void setOwnerId(int ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPassport(String passport) {
-        this.passport = passport;
-    }
 }

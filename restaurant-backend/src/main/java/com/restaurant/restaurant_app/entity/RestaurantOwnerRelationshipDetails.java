@@ -1,12 +1,21 @@
 package com.restaurant.restaurant_app.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "restro_owner_relationship")
 public class RestaurantOwnerRelationshipDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -17,30 +26,4 @@ public class RestaurantOwnerRelationshipDetails {
     @ManyToOne
     @JoinColumn(name = "owner_id", referencedColumnName = "owner_id")
     private RestaurantOwnerDetails owner;
-
-    // Getters and Setters
-
-    public int getId() {
-        return id;
-    }
-
-    public RestaurantDetails getRestaurant() {
-        return restaurant;
-    }
-
-    public RestaurantOwnerDetails getOwner() {
-        return owner;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setRestaurant(RestaurantDetails restaurant) {
-        this.restaurant = restaurant;
-    }
-
-    public void setOwner(RestaurantOwnerDetails owner) {
-        this.owner = owner;
-    }
 }

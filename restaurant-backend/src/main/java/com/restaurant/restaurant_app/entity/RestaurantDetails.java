@@ -1,12 +1,21 @@
 package com.restaurant.restaurant_app.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "restaurant")
 public class RestaurantDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "restro_id")
     private int restroId;
 
@@ -19,38 +28,4 @@ public class RestaurantDetails {
     @ManyToOne
     @JoinColumn(name = "base_address_id", referencedColumnName = "address_id")
     private RestaurantAddressDetails baseAddress;
-
-    // Getters and Setters
-
-    public int getRestroId() {
-        return restroId;
-    }
-
-    public String getRestroName() {
-        return restroName;
-    }
-
-    public String getRestroType() {
-        return restroType;
-    }
-
-    public RestaurantAddressDetails getBaseAddress() {
-        return baseAddress;
-    }
-
-    public void setRestroId(int restroId) {
-        this.restroId = restroId;
-    }
-
-    public void setRestroName(String restroName) {
-        this.restroName = restroName;
-    }
-
-    public void setRestroType(String restroType) {
-        this.restroType = restroType;
-    }
-
-    public void setBaseAddress(RestaurantAddressDetails baseAddress) {
-        this.baseAddress = baseAddress;
-    }
 }
